@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+  FC Mother — Game-Loop Primer E2 (editorial v1)
+  ====================================================================
+  E2 of 4 in the Onboarding sequence · sends T+1d if no first claim
+  Voice: League · 70/30 dial (game-mode forward)
+  Lever: Fogg Behavior Model — Ability (lower friction)
+  See: docs/brand/templates/game-loop-primer-2.md
+  ====================================================================
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>How the game works · FC Mother</title>
+  <!--[if mso]>
+  <style type="text/css">body, table, td, p, a { font-family: Georgia, 'Times New Roman', serif !important; }</style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; background-color: #F7F2E6; }
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; max-width: 100% !important; }
+      .pad-x { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#F7F2E6;">
+
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#F7F2E6;">
+    Three moves. You're already on the table.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F2E6">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+        <table role="presentation" width="600" class="container" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+          <!-- Logo -->
+          <tr>
+            <td align="center" style="padding:36px 24px 16px 24px;">
+              <a href="https://app.fcmother.com" style="text-decoration:none;">
+                <img src="https://app.fcmother.com/images/email/fc-mother-logo-gold-on-cream.png" alt="FC Mother" width="160" style="display:block; width:160px; height:auto; border:0;">
+              </a>
+            </td>
+          </tr>
+
+          <!-- Eyebrow -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:24px 40px 8px 40px;">
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; letter-spacing:2.5px; color:#B99B5A; text-transform:uppercase; margin:0 0 12px 0;">
+                Day 1 · How the League Plays
+              </p>
+              <table role="presentation"><tr><td style="width:48px; border-top:1px solid #B99B5A; font-size:0; line-height:0;">&nbsp;</td></tr></table>
+            </td>
+          </tr>
+
+          <!-- Headline -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:24px 40px 8px 40px;">
+              <h1 style="font-family:Georgia,'Times New Roman',serif; font-size:30px; line-height:38px; color:#25176F; margin:0; font-weight:400;">
+                Three moves. One ritual.
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Intro line -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:0 40px 32px 40px;">
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:16px; line-height:26px; color:#6B5E8A; margin:0; font-style:italic;">
+                Hey Paulo — you joined yesterday. Here it is in three lines:
+              </p>
+            </td>
+          </tr>
+
+          <!-- Action loop expanded — 3 numbered rows -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px;">
+              <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="top" width="32" style="padding:8px 0;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:24px; line-height:28px; color:#B99B5A; margin:0; font-weight:400;">1</p>
+                  </td>
+                  <td style="padding:8px 0 8px 12px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:24px; color:#2D2658;">
+                    <strong style="color:#25176F;">Mothers ask.</strong> We listened to hundreds in our Brazil pilot.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top" style="padding:8px 0;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:24px; line-height:28px; color:#B99B5A; margin:0; font-weight:400;">2</p>
+                  </td>
+                  <td style="padding:8px 0 8px 12px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:24px; color:#2D2658;">
+                    <strong style="color:#25176F;">Fans answer.</strong> That's you. One real act of help.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top" style="padding:8px 0;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:24px; line-height:28px; color:#B99B5A; margin:0; font-weight:400;">3</p>
+                  </td>
+                  <td style="padding:8px 0 8px 12px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:24px; color:#2D2658;">
+                    <strong style="color:#25176F;">Cities heal.</strong> The math works upward.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body intro line -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 16px 40px; font-family:Georgia,'Times New Roman',serif; font-size:16px; line-height:26px; color:#2D2658;">
+              Your move now: the easiest Assist on the platform.
+            </td>
+          </tr>
+
+          <!-- Lowest-friction Opportunity card -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px;">
+              <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="border:1px solid rgba(185,155,90,0.35); border-radius:12px; overflow:hidden;">
+                <tr>
+                  <td style="font-size:0; line-height:0;">
+                    <img src="https://app.fcmother.com/images/email/opportunities/story.jpg" alt="Share Your Mother's Story" width="520" style="display:block; width:100%; height:auto; border:0;">
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:18px 22px 8px 22px;">
+                    <table width="100%" role="presentation"><tr>
+                      <td valign="middle" style="font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:24px; color:#25176F; font-weight:700;">
+                        Share Your Mother's Story
+                      </td>
+                      <td align="right" valign="middle" style="font-family:Georgia,'Times New Roman',serif; font-size:13px; letter-spacing:1px; color:#B99B5A; background-color:#F0E9D6; padding:6px 12px; border-radius:999px;">
+                        +10 Assist
+                      </td>
+                    </tr></table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 22px 12px 22px;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:20px; letter-spacing:1px; color:#8A7F6E; text-transform:uppercase; margin:0 0 6px 0;">
+                      Steps
+                    </p>
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:22px; color:#2D2658; margin:0 0 10px 0;">
+                      <strong>1</strong> Tap Share &nbsp;·&nbsp;
+                      <strong>2</strong> Type 1 paragraph &nbsp;·&nbsp;
+                      <strong>3</strong> Hit send
+                    </p>
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:20px; color:#6B5E8A; margin:0 0 16px 0;">
+                      Time: <strong style="color:#25176F;">2 minutes</strong>.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:8px 40px 32px 40px;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                           href="https://app.fcmother.com/assists/story" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="13%"
+                           fillcolor="#25176F" stroke="f">
+                <w:anchorlock/><center style="color:#FFFFFF; font-family:Georgia,serif; font-size:16px; font-weight:bold;">Earn your first Assist</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+              <a href="https://app.fcmother.com/assists/story" style="display:inline-block; padding:14px 32px; background-color:#25176F; color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; letter-spacing:0.5px;">
+                Earn your first Assist
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- Sign-off -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:16px 40px 8px 40px; font-family:Georgia,'Times New Roman',serif; font-size:14px; color:#6B5E8A; font-style:italic;">
+              The League · Day 1
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="pad-x" style="padding:0 40px 24px 40px;">
+              <table role="presentation"><tr><td style="width:48px; border-top:1px solid #B99B5A; font-size:0; line-height:0;">&nbsp;</td></tr></table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding:16px 40px 32px 40px; background-color:#F7F2E6; font-family:Georgia,'Times New Roman',serif; font-size:11px; line-height:18px; color:#8A7F6E;">
+              FC Mother &middot; The World Cup of Healing<br>
+              <a href="#" style="color:#8A7F6E; text-decoration:underline;">Unsubscribe</a>
+              &nbsp;&middot;&nbsp;
+              <a href="https://app.fcmother.com" style="color:#8A7F6E; text-decoration:underline;">Visit the platform</a>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

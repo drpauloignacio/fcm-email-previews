@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC Mother — Email Preview Gallery</title>
+<style>
+  :root {
+    --cream: #F7F2E6;
+    --navy: #25176F;
+    --gold: #B99B5A;
+    --ink: #2A2547;
+    --muted: #8A7F6E;
+    --line: rgba(37, 23, 111, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 32px 80px; }
+  header {
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 44px;
+    color: var(--navy);
+    margin-top: 8px;
+    line-height: 1.15;
+  }
+  .lead {
+    color: var(--ink);
+    font-size: 17px;
+    margin-top: 16px;
+    max-width: 720px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  section {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  section:first-of-type { border-top: none; padding-top: 0; }
+  h2 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+  .section-meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(37, 23, 111, 0.08);
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card-tag.nonuser { color: #8B5A2B; }
+  .card-title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .card-link {
+    margin-top: 12px;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .card-link::after { content: " →"; }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">FC Mother · Email Design System</div>
+    <h1>Email Preview Gallery</h1>
+    <p class="lead">All lifecycle and AOTW campaign email variants rendered with sample merge-tag data (Paulo · Honor Week · Veteran tier). Click any card to view the full HTML preview.</p>
+    <p class="meta">v1.0 · 2026-05-01 · 45 variants · For internal review only</p>
+  </header>
+
+  <section>
+    <h2>1. AOTW Arc — Sunday Teaser</h2>
+    <p class="section-meta">Sunday 6pm fan-local · Sets up Monday Launch with the week's theme · 4 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-aotw-sunday-teaser-base-email.html">
+        <span class="card-tag">User · Base</span>
+        <div class="card-title">Sunday Teaser — Base</div>
+        <div class="card-desc">Default no-partner fallback. Theme reveal + countdown to Monday launch.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-sunday-teaser-with-partner-email.html">
+        <span class="card-tag">User · With Partner</span>
+        <div class="card-title">Sunday Teaser — With Partner</div>
+        <div class="card-desc">Partner-attribution chip rendered (Apparel Partner for Honor Week).</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-sunday-teaser-nonuser-base-email.html">
+        <span class="card-tag nonuser">Non-User · Base</span>
+        <div class="card-title">Sunday Teaser — Non-User Base</div>
+        <div class="card-desc">12k listserv variant. Sign-up CTA replaces "View opportunity".</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-sunday-teaser-nonuser-with-partner-email.html">
+        <span class="card-tag nonuser">Non-User · With Partner</span>
+        <div class="card-title">Sunday Teaser — Non-User With Partner</div>
+        <div class="card-desc">Listserv + partner attribution.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. AOTW Arc — Monday Launch</h2>
+    <p class="section-meta">Monday 9am fan-local · Hero photo + featured Assist + leaderboard CTA · 9 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-aotw-monday-launch-base-email.html">
+        <span class="card-tag">User · Base</span>
+        <div class="card-title">Monday Launch — Base</div>
+        <div class="card-desc">Hero + featured Assist. No partner, no quote, no sweepstakes.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-with-partner-email.html">
+        <span class="card-tag">User · With Partner</span>
+        <div class="card-title">Monday Launch — With Partner</div>
+        <div class="card-desc">Partner chip + UTM-tagged opportunity link.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-with-quote-email.html">
+        <span class="card-tag">User · With Quote</span>
+        <div class="card-title">Monday Launch — With Quote</div>
+        <div class="card-desc">Featured-quote card from Brazil pilot research.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-with-sweepstakes-email.html">
+        <span class="card-tag">User · With Sweepstakes</span>
+        <div class="card-title">Monday Launch — With Sweepstakes</div>
+        <div class="card-desc">FOMO callout when a Sweepstakes is co-active during the campaign window.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-full-email.html">
+        <span class="card-tag">User · Full</span>
+        <div class="card-title">Monday Launch — Full</div>
+        <div class="card-desc">All blocks active: partner + quote + sweepstakes.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-email.html">
+        <span class="card-tag">User · Canonical</span>
+        <div class="card-title">Monday Launch — Canonical Reference</div>
+        <div class="card-desc">Pre-variant master (legacy reference; not in production routing).</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-nonuser-base-email.html">
+        <span class="card-tag nonuser">Non-User · Base</span>
+        <div class="card-title">Monday Launch — Non-User Base</div>
+        <div class="card-desc">Listserv variant. Sign-up CTA, no leaderboard.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-nonuser-with-quote-email.html">
+        <span class="card-tag nonuser">Non-User · With Quote</span>
+        <div class="card-title">Monday Launch — Non-User With Quote</div>
+        <div class="card-desc">Listserv + featured quote.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-monday-launch-nonuser-with-partner-email.html">
+        <span class="card-tag nonuser">Non-User · With Partner</span>
+        <div class="card-title">Monday Launch — Non-User With Partner</div>
+        <div class="card-desc">Listserv + partner attribution.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. AOTW Arc — Wednesday Chase</h2>
+    <p class="section-meta">Wednesday 12pm fan-local · Mid-week leaderboard + personal-rank push · 5 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-aotw-wednesday-chase-with-rank-email.html">
+        <span class="card-tag">User · With Personal Rank</span>
+        <div class="card-title">Wednesday Chase — With Rank</div>
+        <div class="card-desc">Fan has Assisted this week. Shows their personal rank + climb prompt.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-wednesday-chase-no-rank-email.html">
+        <span class="card-tag">User · No Rank</span>
+        <div class="card-title">Wednesday Chase — No Rank</div>
+        <div class="card-desc">Fan hasn't Assisted yet. Top 10 leaderboard + "join the board" CTA.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-wednesday-chase-email.html">
+        <span class="card-tag">User · Canonical</span>
+        <div class="card-title">Wednesday Chase — Canonical Reference</div>
+        <div class="card-desc">Pre-variant master (legacy reference).</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-wednesday-chase-nonuser-default-email.html">
+        <span class="card-tag nonuser">Non-User · Default</span>
+        <div class="card-title">Wednesday Chase — Non-User Default</div>
+        <div class="card-desc">Listserv default. Top 10 leaderboard + sign-up CTA.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-wednesday-chase-nonuser-no-convert-email.html">
+        <span class="card-tag nonuser">Non-User · Suppressed</span>
+        <div class="card-title">Wednesday Chase — Non-User No Convert</div>
+        <div class="card-desc">Suppression variant for low-engagement listserv recipients.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. AOTW Arc — Friday Final-Call</h2>
+    <p class="section-meta">Friday 6pm fan-local · Last 48 hours + impact recap · 7 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-aotw-friday-final-base-email.html">
+        <span class="card-tag">User · Base</span>
+        <div class="card-title">Friday Final — Base</div>
+        <div class="card-desc">Default countdown + impact recap.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-with-partner-email.html">
+        <span class="card-tag">User · With Partner</span>
+        <div class="card-title">Friday Final — With Partner</div>
+        <div class="card-desc">Partner attribution + co-branded send-off.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-with-quote-email.html">
+        <span class="card-tag">User · With Quote</span>
+        <div class="card-title">Friday Final — With Quote</div>
+        <div class="card-desc">Featured-quote card emphasizes the human story.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-full-email.html">
+        <span class="card-tag">User · Full</span>
+        <div class="card-title">Friday Final — Full</div>
+        <div class="card-desc">All blocks active: partner + quote.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-email.html">
+        <span class="card-tag">User · Canonical</span>
+        <div class="card-title">Friday Final — Canonical Reference</div>
+        <div class="card-desc">Pre-variant master (legacy reference).</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-nonuser-default-email.html">
+        <span class="card-tag nonuser">Non-User · Default</span>
+        <div class="card-title">Friday Final — Non-User Default</div>
+        <div class="card-desc">Listserv last call + sign-up CTA.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-aotw-friday-final-nonuser-no-convert-email.html">
+        <span class="card-tag nonuser">Non-User · Suppressed</span>
+        <div class="card-title">Friday Final — Non-User No Convert</div>
+        <div class="card-desc">Suppression variant for low-engagement listserv recipients.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Onboarding Arc</h2>
+    <p class="section-meta">First-time user lifecycle: Welcome → Game Loop → First Assist Celebration · 8 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-welcome-1-base-email.html">
+        <span class="card-tag">Onboarding · Welcome 1 Base</span>
+        <div class="card-title">Welcome 1 — Base</div>
+        <div class="card-desc">First touch after signup. Sets expectation + first Assist prompt.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-welcome-1-with-referral-email.html">
+        <span class="card-tag">Onboarding · Welcome 1 + Referral</span>
+        <div class="card-title">Welcome 1 — With Referral</div>
+        <div class="card-desc">Surfaced referral source ("invited by [friend]") for warmth.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-game-loop-primer-2-email.html">
+        <span class="card-tag">Onboarding · Game Loop Primer</span>
+        <div class="card-title">Game Loop Primer 2</div>
+        <div class="card-desc">Day 2 — explains the Assists economy, tiers, and how to play.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-first-assist-celebration-base-email.html">
+        <span class="card-tag">Onboarding · First Assist Base</span>
+        <div class="card-title">First Assist Celebration — Base</div>
+        <div class="card-desc">Triggered after the user's first earned Assist. No AOTW context.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-first-assist-celebration-with-aotw-email.html">
+        <span class="card-tag">Onboarding · First Assist + AOTW</span>
+        <div class="card-title">First Assist Celebration — With AOTW</div>
+        <div class="card-desc">Surfaces the active AOTW theme as a next step.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-first-assist-celebration-with-quote-email.html">
+        <span class="card-tag">Onboarding · First Assist + Quote</span>
+        <div class="card-title">First Assist Celebration — With Quote</div>
+        <div class="card-desc">Featured-quote card from a mother whose service was funded.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-first-assist-celebration-with-referral-email.html">
+        <span class="card-tag">Onboarding · First Assist + Referral</span>
+        <div class="card-title">First Assist Celebration — With Referral</div>
+        <div class="card-desc">Referral-aware celebration with friend-credit nudge.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-first-assist-celebration-full-email.html">
+        <span class="card-tag">Onboarding · First Assist Full</span>
+        <div class="card-title">First Assist Celebration — Full</div>
+        <div class="card-desc">All blocks: AOTW + quote + referral.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Week-1 Recap</h2>
+    <p class="section-meta">Day 7 — first weekly digest with personal stats + AOTW recap · 2 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-week-1-recap-default-email.html">
+        <span class="card-tag">User · Default</span>
+        <div class="card-title">Week 1 Recap — Default</div>
+        <div class="card-desc">Personal stats only. No active AOTW campaign tie-in.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-week-1-recap-with-aotw-email.html">
+        <span class="card-tag">User · With AOTW</span>
+        <div class="card-title">Week 1 Recap — With AOTW</div>
+        <div class="card-desc">Stats + the active AOTW theme as a Week 2 prompt.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>7. Assist Confirmation</h2>
+    <p class="section-meta">Triggered immediately after every Assist · 4 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-assist-confirmation-default-email.html">
+        <span class="card-tag">User · Default</span>
+        <div class="card-title">Assist Confirmation — Default</div>
+        <div class="card-desc">Receipt + AOTW pull-through if a campaign is active.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-assist-confirmation-with-quote-email.html">
+        <span class="card-tag">User · With Quote</span>
+        <div class="card-title">Assist Confirmation — With Quote</div>
+        <div class="card-desc">Receipt + featured quote from the mother served.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-assist-confirmation-no-aotw-email.html">
+        <span class="card-tag">User · No AOTW</span>
+        <div class="card-title">Assist Confirmation — No AOTW</div>
+        <div class="card-desc">Receipt only — fired outside the 12-week launch window.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-assist-confirmation-with-quote-no-aotw-email.html">
+        <span class="card-tag">User · Quote + No AOTW</span>
+        <div class="card-title">Assist Confirmation — Quote + No AOTW</div>
+        <div class="card-desc">Receipt + quote, no campaign tie-in.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>8. Milestone Celebration</h2>
+    <p class="section-meta">Cumulative tiers (Debut → MVP) and rank tiers (Top 10 / Top 100) · 4 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-milestone-base-email.html">
+        <span class="card-tag">User · Cumulative Tier</span>
+        <div class="card-title">Milestone — Cumulative Base</div>
+        <div class="card-desc">Tier badge unlock (e.g., Veteran, 100 Cap, Champion). No AOTW context.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-milestone-with-aotw-email.html">
+        <span class="card-tag">User · Cumulative + AOTW</span>
+        <div class="card-title">Milestone — Cumulative With AOTW</div>
+        <div class="card-desc">Tier unlock + active AOTW campaign as next step.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-milestone-rank-email.html">
+        <span class="card-tag">User · Rank Tier</span>
+        <div class="card-title">Milestone — Rank</div>
+        <div class="card-desc">Top 10 National / Top 100 Global breakthrough.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-milestone-rank-with-aotw-email.html">
+        <span class="card-tag">User · Rank + AOTW</span>
+        <div class="card-title">Milestone — Rank With AOTW</div>
+        <div class="card-desc">Rank unlock + active AOTW campaign tie-in.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>9. Near-Miss Milestone (Endowed Progress)</h2>
+    <p class="section-meta">Loss-aversion nudge when a fan is within striking distance of a tier · 2 variants</p>
+    <div class="grid">
+      <a class="card" href="fcm-near-miss-milestone-email.html">
+        <span class="card-tag">User · Near-Miss Base</span>
+        <div class="card-title">Near-Miss — Base</div>
+        <div class="card-desc">"You're 3 Assists from Veteran" — endowed-progress framing.</div>
+        <div class="card-link">View preview</div>
+      </a>
+      <a class="card" href="fcm-near-miss-milestone-with-aotw-email.html">
+        <span class="card-tag">User · Near-Miss + AOTW</span>
+        <div class="card-title">Near-Miss — With AOTW</div>
+        <div class="card-desc">Near-miss + active AOTW theme as the closing path.</div>
+        <div class="card-link">View preview</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Notes for reviewers.</strong> All variants use sample merge data (Paulo · Honor Week · Veteran tier). Hero images, partner logos, and tier badges are placeholder URLs pointing at <code>app.fcmother.com/images/email/</code> — production assets will resolve at send. Variant routing per Campaign documented in <code>docs/brand/templates/aotw-campaign-schedule.md</code>.</p>
+    <p style="margin-top: 12px;">Internal review only · Do not share publicly.</p>
+  </footer>
+</div>
+</body>
+</html>

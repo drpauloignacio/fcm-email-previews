@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+  FC Mother — Assist Confirmation Email (editorial system v1)
+  ====================================================================
+  Trigger:   Every AssistClaim status flip to 'auto_approved' or 'approved'
+  Throttle:  Max 1 email per fan per 60 minutes — additional Assists in the
+             window batch into the next email's hero.
+  Voice:     League · Game/Impact dial 40/60 (brand-voice-guidelines.md §11.5)
+  Design:    email-design-system.md §6.12 + components §5.22 / §5.19 / §5.12
+  ====================================================================
+  VARIANT: assist-confirmation-no-aotw · no Mother quote, no AOTW Campaign live
+
+  MAILCHIMP MERGE TAGS USED (the CRM engine substitutes these — see
+  docs/brand/templates/assist-confirmation.md for the canonical list):
+    Paulo                         — fan first name
+    3               — Assists granted by this claim (or batch sum)
+    12             — present only if batched (>1 Assist in last 60 min)
+    Honor Assist             — verified Opportunity name
+    🏆      — emoji icon, e.g. ☎️ 🏆 💸
+    just now                   — human timestamp ("just now", "5 minutes ago")
+    47                 — fan's lifetime Assists
+    Veteran                     — Debut/On the Pitch/.../MVP
+    100 Cap                 — next tier
+    50                — Assists to next tier
+    true                 — boolean (renders chip if true)
+    3                  — int (only if streakActive)
+    true           — boolean (renders chip if true)
+    BR                      — fan's country code
+    When my son scored, he pointed to the sky for me. That was our pact.              — optional curated featuredQuote{Locale} (Brazil pilot research)
+    Maria              — optional, anonymized first name
+    Recife, Brazil               — optional, city or "Brazil pilot, 2025"
+    Honor Week                — AOTW theme ("Wellness", "Childcare")
+    Honor Week — Mother's Day                — AOTW campaign title
+    https://app.fcmother.com/images/email/campaigns/honor-hero.jpg         — AOTW hero image
+    #25176F           — optional override for primary CTA color
+    https://app.fcmother.com/assists-of-the-week/honor                  — /assists-of-the-week/honor
+    Honor Assist     — AOTW's featured Opportunity
+    https://app.fcmother.com/images/email/opportunities/honor-pele.jpg     — cultural-anchor hero photo
+    https://app.fcmother.com/assists/honor-pele-tribute       — direct link to that Opportunity
+    https://fcm.gg/honor-apparel          — optional UTM-bearing link override
+    https://app.fcmother.com                       — base app URL
+    #               — Mailchimp's *|UNSUB|* or platform-specific
+  ====================================================================
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Assist verified · FC Mother</title>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, p, a { font-family: Georgia, 'Times New Roman', serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; background-color: #F7F2E6; }
+
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; max-width: 100% !important; }
+      .pad-x { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-num { font-size: 56px !important; line-height: 64px !important; }
+      .hero-img { width: 100% !important; height: auto !important; }
+      .stack { display: block !important; width: 100% !important; padding: 0 0 12px 0 !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#F7F2E6; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+  <!-- Preheader (gray text after subject) -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#F7F2E6;">
+    Honor Assist ✓ — your 47 on the table.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F7F2E6" style="background-color:#F7F2E6;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+        <table role="presentation" width="600" class="container" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF; border-collapse:collapse;">
+
+          <!-- Logo header -->
+          <tr>
+            <td align="center" style="padding:36px 24px 8px 24px; background-color:#FFFFFF;">
+              <a href="https://app.fcmother.com" style="text-decoration:none;">
+                <img src="https://app.fcmother.com/images/email/fc-mother-logo-gold-on-cream.png" alt="FC Mother — The World Cup of Healing" width="160" style="display:block; width:160px; max-width:100%; height:auto; border:0;">
+              </a>
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- §5.22 verification-panel — the dopamine hero                 -->
+          <!-- ============================================================ -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:32px 40px 32px 40px; background-color:#FFFFFF;">
+
+              <!-- Eyebrow -->
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; letter-spacing:2.5px; color:#B99B5A; text-transform:uppercase; margin:0 0 12px 0;">
+                Assist Verified
+              </p>
+
+              <!-- 48px gold rule -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="width:48px; border-top:1px solid #B99B5A; font-size:0; line-height:0;">&nbsp;</td></tr>
+              </table>
+
+              <!-- +N hero -->
+              <p class="hero-num" style="font-family:Georgia,'Times New Roman',serif; font-size:72px; line-height:80px; color:#25176F; margin:24px 0 8px 0; font-weight:400;">
+                +3
+              </p>
+
+              <!-- Opportunity name + category icon + check -->
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:20px; line-height:28px; color:#2D2658; margin:0 0 12px 0;">
+                <span style="font-size:22px; vertical-align:middle;">🏆</span>&nbsp;Honor Assist&nbsp;<span style="color:#B99B5A;">✓</span>
+              </p>
+
+              <!-- Timestamp -->
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; color:#6B5E8A; font-style:italic; margin:0;">
+                Verified just now
+              </p>
+
+              <!-- Batch line — only renders when recentBatchCount is present and > 1 -->
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; color:#8E763E; margin:8px 0 0 0;">
+                12 Assists this hour.
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- Editorial paragraph — 1–2 sentences IMPACT mode              -->
+          <!-- ============================================================ -->
+
+          <!-- Variant A: curated Mother quote available — render quote card. Source: AssistOpportunity.featuredQuote{Locale} (Brazil pilot research). NEVER fabricated. -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px; background-color:#FFFFFF;">
+              <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#F0E9D6" style="background-color:#F0E9D6; border-radius:8px; border-left:3px solid #B99B5A;">
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; letter-spacing:1.5px; color:#B99B5A; text-transform:uppercase; margin:0 0 12px 0;">
+                      What a Mother told us
+                    </p>
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:18px; line-height:28px; color:#25176F; margin:0 0 12px 0;">
+                      &ldquo;When my son scored, he pointed to the sky for me. That was our pact.&rdquo;
+                    </p>
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; color:#6B5E8A; margin:0;">
+                      — Maria, Recife, Brazil
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Variant B: no curated quote — general-truth rotation line. -->
+          <!-- The CRM engine picks one of the 4 lines from the spec's rotation pool -->
+          <!-- via (userId × dayOfYear) mod 4 and substitutes here as Mothers told us what they need.. -->
+          <!-- NEVER fabricate a Mother quote. -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px; background-color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-size:16px; line-height:26px; color:#2D2658; text-align:center;">
+              Mothers told us what they need.
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- Stats line — total + tier + next tier                        -->
+          <!-- ============================================================ -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 8px 40px; background-color:#FFFFFF;">
+              <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="padding:8px 0; border-top:1px solid rgba(185,155,90,0.25); border-bottom:1px solid rgba(185,155,90,0.25);">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:22px; color:#2D2658; margin:0;">
+                      <strong style="color:#25176F;">47</strong> on the table
+                      &nbsp;·&nbsp; <strong style="color:#25176F;">Veteran</strong>
+                      &nbsp;·&nbsp; 50 to 100 Cap
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- State badges row — only renders if streak/country active     -->
+          <!-- ============================================================ -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:16px 40px 8px 40px; background-color:#FFFFFF;">
+              <span style="display:inline-block; margin:0 4px 8px 4px; padding:6px 14px; background-color:#F0E9D6; border-radius:999px; font-family:Georgia,'Times New Roman',serif; font-size:12px; letter-spacing:1px; color:#8E763E; text-transform:uppercase;">
+                Streak · 3w
+              </span>
+              <span style="display:inline-block; margin:0 4px 8px 4px; padding:6px 14px; background-color:#F0E9D6; border-radius:999px; font-family:Georgia,'Times New Roman',serif; font-size:12px; letter-spacing:1px; color:#8E763E; text-transform:uppercase;">
+                Country Boost · BR
+              </span>
+            </td>
+          </tr>
+
+          <!-- Spacer -->
+          <tr><td style="background-color:#FFFFFF; padding:24px 40px 0 40px; font-size:0; line-height:0;">&nbsp;</td></tr>
+
+          <!-- Eyebrow + divider · Next Move (no AOTW Campaign live) -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:32px 40px 4px 40px; background-color:#FFFFFF;">
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:13px; line-height:18px; letter-spacing:2.5px; color:#B99B5A; text-transform:uppercase; margin:0 0 8px 0;">
+                Next Move
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="width:48px; border-top:1px solid #B99B5A; font-size:0; line-height:0;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Headline -->
+          <tr>
+            <td class="pad-x" style="padding:24px 40px 4px 40px; background-color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-size:24px; line-height:32px; color:#25176F; text-align:center;">
+              Stay on the table
+            </td>
+          </tr>
+
+          <!-- Subhead -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px; background-color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:24px; color:#6B5E8A; text-align:center;">
+              Laundry Week Assist is open. Pick the next Assist that fits your week.
+            </td>
+          </tr>
+
+          <!-- Next-best Opportunity card (slim variant) -->
+          <tr>
+            <td class="pad-x" style="padding:0 40px 24px 40px;">
+              <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="border:1px solid rgba(185,155,90,0.35); border-radius:12px; overflow:hidden;">
+                <tr>
+                  <td style="font-size:0; line-height:0;">
+                    <img src="https://app.fcmother.com/images/email/opportunities/laundry.jpg" alt="Laundry Week Assist" width="520" style="display:block; width:100%; height:auto; border:0;">
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:18px 22px 6px 22px;">
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:24px; color:#25176F; font-weight:700; margin:0 0 6px 0;">
+                      Laundry Week Assist
+                    </p>
+                    <p style="font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:22px; color:#6B5E8A; margin:0 0 8px 0;">
+                      The next Assist on your table.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:8px 40px 40px 40px; background-color:#FFFFFF;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                           href="https://app.fcmother.com/assists/laundry-week" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="13%"
+                           fillcolor="#25176F" stroke="f">
+                <w:anchorlock/><center style="color:#FFFFFF; font-family:Georgia,serif; font-size:16px; font-weight:bold;">Earn another</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+              <a href="https://app.fcmother.com/assists/laundry-week" style="display:inline-block; padding:14px 36px; background-color:#25176F; color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:16px; text-decoration:none; border-radius:6px; letter-spacing:0.5px;">
+                Earn another
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- League sign-off                                              -->
+          <!-- ============================================================ -->
+          <tr>
+            <td align="center" class="pad-x" style="padding:24px 40px 8px 40px; background-color:#FFFFFF; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:24px; color:#6B5E8A; font-style:italic;">
+              The League
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="pad-x" style="padding:0 40px 24px 40px; background-color:#FFFFFF;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="width:48px; border-top:1px solid #B99B5A; font-size:0; line-height:0;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============================================================ -->
+          <!-- Footer                                                       -->
+          <!-- ============================================================ -->
+          <tr>
+            <td align="center" style="padding:16px 40px 32px 40px; background-color:#F7F2E6; font-family:Georgia,'Times New Roman',serif; font-size:11px; line-height:18px; color:#8A7F6E;">
+              FC Mother &middot; The World Cup of Healing<br>
+              <a href="#" style="color:#8A7F6E; text-decoration:underline;">Unsubscribe</a>
+              &nbsp;&middot;&nbsp;
+              <a href="https://app.fcmother.com" style="color:#8A7F6E; text-decoration:underline;">Visit the platform</a>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
